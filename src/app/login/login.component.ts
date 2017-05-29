@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.loading = false;
     // Binding username va password từ model
     this._authenService.login(this.model.username, this.model.password).subscribe(data => {
-      this._router.navigate([UrlConstants.LOGIN])
+      this._router.navigate([UrlConstants.HOME])
     }, error => {
       this._notificationService.printErrorMessage(MessageConstants.SYSTEM_ERROR);
       this.loading = false;
