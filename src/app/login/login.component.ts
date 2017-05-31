@@ -14,15 +14,16 @@ export class LoginComponent implements OnInit {
   loading = false;
   model: any = {};
   returnUrl: string;
-  constructor(private _authenService: AuthenService,private _notificationService: NotificationService, private _router: Router) { }
+  constructor(private _authenService: AuthenService,private _notificationService: NotificationService,
+   private _router: Router) { }
 
   ngOnInit() {
   }
   login() {
-    this.loading = false;
+    this.loading = true;
     // Binding username va password từ model
     this._authenService.login(this.model.username, this.model.password).subscribe(data => {
-      this._router.navigate([UrlConstants.HOME])
+      this._router.navigate([UrlConstants.HOME]);
     }, error => {
       this._notificationService.printErrorMessage(MessageConstants.SYSTEM_ERROR);
       this.loading = false;
